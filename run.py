@@ -1,21 +1,20 @@
-import unittest
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
 
-class DouyuSelenium(unittest.TestCase):
-    def setUp(self):
+class DouyuSelenium(object):
+    def __init__(self):
         '''
         初始化方法
         '''
-        self.driver = webdriver.PhantomJS()
+        self.driver = webdriver.Chrome()
 
     def testDouyu(self):
         '''
         具体的测试用力方法，一定要以test开头
         :return:
         '''
-        self.driver = webdriver.get('http://www.douyu.com/directory/all')
+        self.driver.get('http://www.douyu.com/directory/all')
         while True:
             # 指定xmml解析
             soup = BeautifulSoup(self.driver.page_source, 'xml')
@@ -33,15 +32,11 @@ class DouyuSelenium(unittest.TestCase):
 
             # 模拟下一页点击
             self.driver.find_element_by_class_name('shark-pager-next').click()
-    def tearDown(self):
-        '''
-        退出时的清理方法
-        :return:
-        '''
-        print('加载完成！')
-        self.driver.quit()
+
+        self.driver.close()
 
 if __name__ == '__main__':
-    unittest.main()
+    douyu = DouyuSelenium()
+    douyu.testDouyu()
 
 
