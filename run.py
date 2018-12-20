@@ -41,4 +41,7 @@ class DouyuSelenium(unittest.TestCase):
         print('加载完成！')
         self.driver.quit()
 
+if __name__ == '__main__':
+    unittest.main()
+
 
