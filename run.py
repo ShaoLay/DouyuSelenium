@@ -33,4 +33,12 @@ class DouyuSelenium(unittest.TestCase):
 
             # 模拟下一页点击
             self.driver.find_element_by_class_name('shark-pager-next').click()
+    def tearDown(self):
+        '''
+        退出时的清理方法
+        :return:
+        '''
+        print('加载完成！')
+        self.driver.quit()
+
 
